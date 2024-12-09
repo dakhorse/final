@@ -14,17 +14,11 @@ import java.util.List;
 public class CartController{
     @Autowired
     private CartService cartService;
-    private CartRepository repo;
+
     @GetMapping
     @ResponseBody
     public List<Cart> getAllCarts(){
         return cartService.findAll();
-    @GetMapping({"", "/"})
-    public String ShowProductList(Model model){
-            List<Cart> products = repo.findAll();//Sort.by(Sort.Direction.DESC, "id")
-            model.addAttribute("products", products);
-            return "products/cart";
-    }
     }
     @GetMapping("/{id}")
     @ResponseBody
